@@ -57,9 +57,6 @@ const randY = () =>
 const randRate = () =>
       Math.trunc(Math.random() * 100 + 5);
 
-const startingPower = rate =>
-      rate * 10;
-
 const radius = planet =>
       Math.sqrt(planet.power * 0.01);
 
