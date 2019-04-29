@@ -33,7 +33,7 @@ function draw() {
     drawPlanets(planets);
 }
 
-const createPlanets = () =>
+const createPlanets = ps =>
       ps.map((p, index) => new Planet(p[0], p[1], randRate(), index));
 
 const createPlayers = ps =>
