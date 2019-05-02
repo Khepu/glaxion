@@ -18,22 +18,7 @@ const PLANET_COORDS = [[WIDTH/2, HEIGHT/2],
                     [WIDTH*2/3, HEIGHT/3], //green
                     [WIDTH/2, HEIGHT*(2/2.75)]]; //blue
 
-let planets = [];
-let players = [];
-
-function setup() {
-    createCanvas(WIDTH, HEIGHT);
-    createPlayers();
-    planets = createPlanets(PLANET_COORDS);
-}
-
-function draw() {
-    clear();
-    updatePlanets(planets);
-    drawPlanets(planets);
-}
-
-const createPlanets = () =>
+const createPlanets = ps =>
       ps.map((p, index) => new Planet(p[0], p[1], randRate(), index));
 
 const createPlayers = ps =>
@@ -57,4 +42,19 @@ const score = player =>
       player.planets
             .map(p => p.power)
             .reduce((acc, val) => acc + val);
+
+let planets = createPlanets(PLANET_COORDS);
+let players = createPlayers();
+
+function setup() {
+    createCanvas(WIDTH, HEIGHT);
+}
+
+function draw() {
+    clear();
+    updatePlanets(planets);
+    drawPlanets(planets);
+}
+
+
 
