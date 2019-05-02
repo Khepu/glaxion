@@ -1,0 +1,6 @@
+Chromosomes:
+
+range: πόσο μακριά θα κοιτάει για να κάνει κίνηση
+transfer %: τι ποσοστό της δύναμης θα μεταφέρεται στον άλλο πλανήτη
+weakest-first(player)
+weakest-first(planet)
