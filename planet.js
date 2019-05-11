@@ -24,7 +24,6 @@ class Planet{
     }
 
     transfer(target){
-
         // counter for how long the transfer line will be shown
         this.connection = (planet => {
             let viewCount = 15;
@@ -37,8 +36,8 @@ class Planet{
             };
         })(this);
 
-        const power = this.power;
-        this.power = 0;
+        const power = this.power * this.owner.transitivity();
+        this.power -= power;
 
         target.power += power * (target.owner.id == this.owner.id ? 1 : -1);
 

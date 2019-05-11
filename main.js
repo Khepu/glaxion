@@ -43,7 +43,7 @@ const updatePlanets = planets =>
       planets.forEach(p => p.update());
 
 const randRate = () =>
-      Math.trunc(Math.random() * 100 + 5);
+      (Math.random() * 100 + 5) | 0;
 
 const radius = planet =>
       Math.sqrt(planet.power * 0.005);
@@ -58,7 +58,7 @@ const fitness = player => {
 };
 
 const isOver = planets =>
-      new Set(planets.map(p => p.owner)).size == 1;
+      new Set(planets.map(p => p.owner).filter(o => o.id != -1)).size == 1;
 
 //p5.js entry functions
 
@@ -76,5 +76,6 @@ function draw() {
 
     updatePlanets(planets);
     drawPlanets(planets);
+    players.forEach(p => p.play(planets));
 }
 
