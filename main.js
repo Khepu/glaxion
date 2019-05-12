@@ -3,9 +3,9 @@ const WIDTH = window.innerWidth;
 const MAX_PLANETS = 30;
 const MAX_PLAYER = 4;
 
-const PLANET_COORDS = [[WIDTH/3, HEIGHT/3], //red
-                       [WIDTH*2/3, HEIGHT/3], //green
-                       [WIDTH/2, HEIGHT*(2/2.75)], //blue
+const PLANET_COORDS = [[WIDTH/3, HEIGHT/3], //player 1
+                       [WIDTH*2/3, HEIGHT/3], //player 2
+                       [WIDTH/2, HEIGHT*(2/2.75)], //player 3
 
                        [WIDTH/2, HEIGHT/2],
                        //ring planets
@@ -49,7 +49,7 @@ const createPlanets = ps =>
       ps.map((p, index) => new Planet(p[0], p[1], randRate(), index));
 
 const createPlayers = () =>
-      Array(10).fill(0).map(i => ["#ff0000", "#00ff00", "#0000ff"].map((c, i) => new Player(i, c)));
+      Array(10).fill(0).map(i => [0, 1, 2].map(c => new Player(c)));
 
 const positionPlayers = (players, planets) =>
       planets.slice(0, 3).map((p, i) => p.owner = players[i]);

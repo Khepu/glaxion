@@ -1,12 +1,17 @@
 class Player {
-    constructor(id, color) {
+    constructor(id) {
         this.id = id;
-        this.color = color;
         // [aggressiveness, transitivity, noMovePos]
         this.chromosome = [(Math.random() * 100) | 0,
                            (Math.random() * 100) | 0,
                            (Math.random() * 100) | 0];
         this.mutationChance = 0.15;
+        this.color = this.genColor();
+    }
+
+    genColor() {
+        const rgb = this.chromosome.map(c => (c * 2.55) | 0);
+        return "rgb(" + rgb[0] + ", " + rgb[1] + ", " + rgb[2] + ")";
     }
 
     setChromosome(chromosome){

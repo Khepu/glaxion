@@ -6,6 +6,7 @@ class Planet{
         this.power = rate;
         this.id = id;
         this.owner = new Player(-1, "#cccccc");
+        this.owner.color = "#cccccc";
         this.connection = false;
     }
 
