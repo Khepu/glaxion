@@ -2,27 +2,40 @@ class Player {
     constructor(id, color) {
         this.id = id;
         this.color = color;
-        this.chromosome = {
-            range: (Math.random() * 11 + 1) | 0,
-            aggressiveness: (Math.random() * 100) | 0,
-            transitivity: (Math.random() * 100) | 0,
-            //wait: Math.random()
-        };
+        // [aggressiveness, transitivity, noMovePos]
+        this.chromosome = [(Math.random() * 100) | 0,
+                           (Math.random() * 100) | 0,
+                           (Math.random() * 100) | 0];
+        this.mutationChance = 0.15;
     }
 
-    range(){
-        return this.chromosome.range;
+    setChromosome(chromosome){
+        this.chromosome = chromosome;
     }
 
     aggressiveness(){
-        return this.chromosome.aggressiveness / 100;
+        return this.chromosome[0] / 100;
     }
 
     transitivity (){
-        return this.chromosome.transitivity / 100;
+        return this.chromosome[1] / 100;
+    }
+
+    noMovePos(){
+        return this.chromosome[2] / 100;
+    }
+
+    mutate() {
+        const mutationMap = [...Array(this.chromosome.length)].map(k => Math.random() <= this.mutationChance);
+        return this.chromosome
+            .map((a, i) => a + (mutationMap[i] && (Math.random() * 15 - 5) | 0) % 100);
     }
 
     play(planets){
+        if (Math.random < this.noMovePos()){
+            return;
+        }
+
         const ownedPlanets = planets.filter(p => p.owner.id == this.id);
 
         if (ownedPlanets.length == 0){
