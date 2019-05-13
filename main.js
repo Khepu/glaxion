@@ -37,6 +37,7 @@ const initGame = () => {
     if (game == 9){
         players = evolve(generationCache);
         ++generation;
+        document.getElementById("generations").value = "Generation = " + generation;
     }
 
     game = (++game) % 10;
