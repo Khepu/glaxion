@@ -1,6 +1,6 @@
 html, body {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     width: 100%;
     height: 100%;
     border: 0;
@@ -8,4 +8,13 @@ html, body {
     /* if things are not drawn delete this line */
     overflow: hidden;
 }
+
+.header {
+    padding: 1px;
+    text-align: center;
+    background: #cd3800 ;
+    color: white;
+    font-size: 20px;
+  }
+
 
